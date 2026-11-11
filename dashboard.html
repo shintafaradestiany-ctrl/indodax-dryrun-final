@@ -32,8 +32,18 @@
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media(max-width:800px){.cols{grid-template-columns:1fr}}
   code{background:#f1f5f9;padding:1px 5px;border-radius:4px}
+  body::before{content:"";position:fixed;top:0;left:0;right:0;height:5px;z-index:10}
+  body.st-final::before{background:#059669}
+  body.st-partial::before{background:#d97706}
+  body.st-none::before{background:#9ca3af}
+  .banner{max-width:1140px;margin:18px auto 0;padding:11px 16px;border-radius:10px;font-size:13px;line-height:1.45;border:1px solid}
+  .banner.partial{background:#fffbeb;border-color:#fcd34d;color:#92400e}
+  .banner.final{background:#ecfdf5;border-color:#6ee7b7;color:#065f46}
+  .banner.none{background:#f3f4f6;border-color:#d1d5db;color:#374151}
+  .badge.st-final{background:#064e3b;border-color:#059669}
+  .badge.st-partial{background:#78350f;border-color:#d97706}
   footer{max-width:1180px;margin:0 auto;padding:0 20px 40px;color:var(--mut);font-size:12px}
-</style></head><body>
+</style></head><body class="st-partial">
 <header>
   <h1>UAS Algoritma Trading — Bot Dry Run Indodax</h1>
   <div class="sub">Shinta Faradillah Destiany · 25110200007 · Forward test 2026-11-10 s/d 2026-11-10 (WIB)</div>
@@ -43,10 +53,12 @@
     <span class="badge">Fee taker all-in 0,30%/sisi</span>
     <span class="badge">Spread backtest 0,177% · slippage 0,050%</span>
     <span class="badge">Modal Rp100.000.000</span>
-    <span class="badge">Dibuat 11 Nov 2026, 21.25 WIB</span>
+    <span class="badge st-partial">Status log: PARSIAL (1/10 hari)</span>
+    <span class="badge">Dibuat 11 Nov 2026, 21.57 WIB</span>
   </div>
 </header>
 <main>
+  <div class="banner partial"><b>LOG PARSIAL — baru 1 hari (0,0 dari 10 hari).</b> Forward test belum selesai. Angka di halaman ini belum mewakili periode penuh dan tidak boleh dicampur dengan dashboard final.</div>
 
   <h2>1. Ringkasan</h2>
   <div class="grid">

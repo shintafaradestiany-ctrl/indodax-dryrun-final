@@ -126,6 +126,11 @@ sinyalnya tajam.
 
 ## 6. Backtest vs forward test (diisi setelah 10 hari)
 
+> Dashboard menandai status log otomatis: **PARSIAL (oranye)** bila rentang log belum
+> 10 hari, **FINAL (hijau)** bila sudah. Kalau tugas dikumpulkan 14 November, halaman
+> yang disertakan masih PARSIAL dan tabel di bawah belum boleh dianggap hasil final;
+> versi FINAL dikirim setelah 21 November.
+
 Jalankan:
 
 ```bash

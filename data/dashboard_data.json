@@ -4,7 +4,7 @@
     "student": "Shinta Faradillah Destiany",
     "nim": "25110200007",
     "freeze": null,
-    "generatedAt": "11 Nov 2026, 09.46 WIB",
+    "generatedAt": "11 Nov 2026, 21.57 WIB",
     "tfMin": 60,
     "capital": 100000000,
     "universe": [
@@ -68,7 +68,15 @@
     },
     "btPeriod": "2023-11-10 s/d 2026-11-10",
     "forwardStart": "2026-11-10",
-    "forwardEnd": "2026-11-10"
+    "forwardEnd": "2026-11-10",
+    "forwardWindow": {
+      "targetDays": 10,
+      "elapsedDays": 0,
+      "daysLogged": 1,
+      "status": "partial",
+      "firstTs": 1794318138,
+      "lastTs": 1794318138
+    }
   },
   "backtest": {
     "perf": {

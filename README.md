@@ -104,6 +104,16 @@ Hasil penting:
 
 - `GET /api/status?secret=...` — read-only: mode storage (`redis`/`file`), jumlah baris tiap log, ringkasan state, status kill switch.
 - `GET /api/export?secret=...` — state + seluruh log mentah dalam satu JSON.
+
+Dashboard menandai status log secara otomatis dari rentang tanggal log (bukan diketik manual):
+
+| Status | Warna | Arti |
+|---|---|---|
+| **PARSIAL** | garis atas & banner **oranye** | log belum mencakup 10 hari; aman untuk submit awal, tetapi angka forward belum final |
+| **FINAL** | garis atas & banner **hijau** | log sudah mencakup ≥10 hari penuh |
+| belum ada | abu-abu | belum ada tick |
+
+Dengan begitu dashboard yang dikumpulkan tanggal 14 November (parsial) tidak mungkin tertukar dengan dashboard final setelah 21 November.
 - Setelah forward test selesai, tarik log ke laptop lalu bangun ulang dashboard:
 
 ```powershell

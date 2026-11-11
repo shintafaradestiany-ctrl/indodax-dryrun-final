@@ -44,7 +44,9 @@ fs.writeFileSync(path.join(ROOT, 'dashboard.html'), renderDashboard(data));
 
 const fw = data.forward.perf;
 const wb = data.windowBt?.perf;
+const fwin = data.meta.forwardWindow;
 console.log('=== Forward test ===');
+console.log(`Status log  : ${fwin.status.toUpperCase()} (${fwin.daysLogged}/${fwin.targetDays} hari WIB, rentang ${fwin.elapsedDays} hari)`);
 if (fw) {
   console.log(`Periode      : ${data.meta.forwardStart} s/d ${data.meta.forwardEnd}`);
   console.log(`Return       : ${fw.totalReturnPct.toFixed(2)}%   Max DD: ${fw.mddPct.toFixed(2)}%`);
@@ -52,7 +54,7 @@ if (fw) {
   console.log(`Benchmark    : ${fw.benchmarkPct == null ? '—' : fw.benchmarkPct.toFixed(2) + '%'}`);
   if (wb) console.log(`Gap vs BT    : ${(fw.totalReturnPct - wb.totalReturnPct).toFixed(2)} pp`);
 } else {
-  console.log('belum ada log forward test (logs/equity.ndjson < 2 baris)');
+  console.log(`Return belum dihitung: butuh ≥2 hari WIB (sekarang ${fwin.daysLogged} hari log).`);
 }
 console.log(`Uptime       : ${data.ops.uptime.pct.toFixed(1)}% (${data.ops.uptime.processed}/${data.ops.uptime.expected} candle)`);
 console.log(`Snapshot     : ${data.dataQuality.snapshotCount} · median spread ${data.dataQuality.medianSpreadPct?.toFixed(3) ?? '—'}%`);
