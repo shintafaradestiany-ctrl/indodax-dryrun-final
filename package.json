@@ -1,0 +1,19 @@
+{
+  "name": "indodax-dryrun-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Bot trading dry run Indodax (API publik, long-only) - UAS Algoritma Trading",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "selftest": "node scripts/selftest.mjs",
+    "fetch": "node scripts/fetch_history.mjs",
+    "liquidity": "node scripts/liquidity.mjs",
+    "backtest": "node scripts/backtest.mjs",
+    "tick": "node scripts/local_tick.mjs",
+    "hitung-ulang": "node scripts/hitung_ulang.mjs",
+    "snapshot": "node scripts/snapshot.mjs"
+  }
+}

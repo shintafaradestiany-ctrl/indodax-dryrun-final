@@ -1,0 +1,32 @@
+name: tick
+
+# Penjadwal bot. Vercel Hobby hanya mengizinkan cron harian, jadi untuk timeframe
+# 1 jam kita memakai GitHub Actions (gratis) yang memanggil endpoint /api/tick.
+# Menit ke-7 (bukan 0) agar tidak bertabrakan dengan lonjakan penjadwal.
+on:
+  schedule:
+    - cron: '7 * * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: tick
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Panggil bot
+        env:
+          BOT_URL: ${{ secrets.BOT_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          set -e
+          test -n "$BOT_URL" || (echo "secret BOT_URL belum diisi" && exit 1)
+          test -n "$CRON_SECRET" || (echo "secret CRON_SECRET belum diisi" && exit 1)
+          echo "tick $(date -u +%FT%TZ)"
+          curl -sS --fail-with-body --max-time 90 \
+            -H "Authorization: Bearer $CRON_SECRET" \
+            "$BOT_URL/api/tick?source=github-actions" | tee /tmp/tick.json
+          echo

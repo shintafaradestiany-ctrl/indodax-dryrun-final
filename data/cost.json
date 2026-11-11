@@ -1,0 +1,19 @@
+{
+  "spreadPct": 0.1773,
+  "slippagePct": 0.05,
+  "feeTakerPct": 0.3,
+  "spreadBySym": {
+    "BTCIDR": 0.1049,
+    "ETHIDR": 0.1263,
+    "SOLIDR": 0.0141,
+    "DOGEIDR": 0.2414,
+    "XRPIDR": 0.0466,
+    "ADAIDR": 0.8465,
+    "BNBIDR": 0.9337,
+    "LINKIDR": 0.3907
+  },
+  "snapshotsUsed": 22,
+  "snapshotsTotal": 26,
+  "source": "median 22 snapshot order book (universe saja)",
+  "computedAt": "2026-11-10T13:41:49.562Z"
+}
