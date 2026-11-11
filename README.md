@@ -27,6 +27,8 @@ Detail dan alasan tiap pilihan: **`STRATEGI.md`**. Hasil backtest & refleksi: **
 ```
 api/tick.js              endpoint bot (dipanggil penjadwal)
 api/dashboard.js         dashboard live dari log di storage
+api/status.js            diagnostik read-only (mode storage, jumlah log, state)
+api/export.js            ekspor state + log mentah untuk laporan
 lib/strategy.js          aturan sinyal + sizing + pembulatan (dipakai backtest & bot)
 lib/backtest.js          mesin backtest portofolio (biaya fee + spread + slippage)
 lib/bot.js               satu tick bot: validasi -> sinyal -> eksekusi simulasi -> log
@@ -42,6 +44,7 @@ scripts/liquidity.mjs        ukur likuiditas kandidat pada AWAL periode backtest
 scripts/backtest.mjs         backtest + uji parameter -> logs/, data/
 scripts/snapshot.mjs         snapshot order book manual
 scripts/local_tick.mjs       jalankan satu tick di lokal
+scripts/pull_logs.mjs        tarik state + log mentah dari deployment
 scripts/hitung_ulang.mjs     hitung ulang semua angka -> dashboard.html
 scripts/selftest.mjs         uji unit logika inti
 .github/workflows/tick.yml   penjadwal per jam (GitHub Actions)
@@ -96,6 +99,21 @@ Hasil penting:
 
 > Jika memakai Vercel Pro, cron per jam bisa ditambahkan di `vercel.json`:
 > `"crons": [{ "path": "/api/tick", "schedule": "7 * * * *" }]`
+
+## Memantau & menarik log dari deployment
+
+- `GET /api/status?secret=...` — read-only: mode storage (`redis`/`file`), jumlah baris tiap log, ringkasan state, status kill switch.
+- `GET /api/export?secret=...` — state + seluruh log mentah dalam satu JSON.
+- Setelah forward test selesai, tarik log ke laptop lalu bangun ulang dashboard:
+
+```powershell
+$env:BOT_URL="https://<project>.vercel.app"
+$env:CRON_SECRET="<secret>"
+node scripts/pull_logs.mjs      # menulis logs/*.ndjson + .data/state.json
+node scripts/hitung_ulang.mjs   # membangun dashboard.html dari log mentah
+```
+
+Commit `logs/*.ndjson` dan `dashboard.html` hasil tarikan itu sebagai bukti forward test.
 
 ## Kill switch
 

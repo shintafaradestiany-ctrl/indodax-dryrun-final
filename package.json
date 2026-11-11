@@ -13,6 +13,7 @@
     "liquidity": "node scripts/liquidity.mjs",
     "backtest": "node scripts/backtest.mjs",
     "tick": "node scripts/local_tick.mjs",
+    "pull": "node scripts/pull_logs.mjs",
     "hitung-ulang": "node scripts/hitung_ulang.mjs",
     "snapshot": "node scripts/snapshot.mjs"
   }
