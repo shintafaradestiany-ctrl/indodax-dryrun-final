@@ -1,3 +1,17 @@
-{"ts":1794318138,"iso":"2026-11-10T20:42:18.000+07:00","sym":"ADAIDR","reason":"data tidak valid: volume nol pada 2026-11-01T21:00:00.000Z"}
-{"ts":1794318138,"iso":"2026-11-10T20:42:18.000+07:00","sym":"BNBIDR","reason":"data tidak valid: volume nol pada 2026-10-29T19:00:00.000Z"}
-{"ts":1794318138,"iso":"2026-11-10T20:42:18.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada 2026-10-24T22:00:00.000Z"}
+{"ts":1794427225,"iso":"2026-11-12T03:00:25.000+07:00","sym":"BTCIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794427225,"iso":"2026-11-12T03:00:25.000+07:00","sym":"ETHIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794427225,"iso":"2026-11-12T03:00:25.000+07:00","sym":"SOLIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794427225,"iso":"2026-11-12T03:00:25.000+07:00","sym":"DOGEIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794427225,"iso":"2026-11-12T03:00:25.000+07:00","sym":"XRPIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794427225,"iso":"2026-11-12T03:00:25.000+07:00","sym":"ADAIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794427225,"iso":"2026-11-12T03:00:25.000+07:00","sym":"BNBIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794427225,"iso":"2026-11-12T03:00:25.000+07:00","sym":"LINKIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794445927,"iso":"2026-11-12T08:12:07.000+07:00","sym":"BTCIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794445927,"iso":"2026-11-12T08:12:07.000+07:00","sym":"ETHIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794445927,"iso":"2026-11-12T08:12:07.000+07:00","sym":"SOLIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794445927,"iso":"2026-11-12T08:12:07.000+07:00","sym":"DOGEIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794445927,"iso":"2026-11-12T08:12:07.000+07:00","sym":"XRPIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794445927,"iso":"2026-11-12T08:12:07.000+07:00","sym":"ADAIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794445927,"iso":"2026-11-12T08:12:07.000+07:00","sym":"BNBIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794445927,"iso":"2026-11-12T08:12:07.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-12T00:00:00.000Z)"}
+{"ts":1794452043,"iso":"2026-11-12T09:54:03.000+07:00","sym":"LINKIDR","reason":"2 candle terlewat sejak tick terakhir"}

@@ -4,7 +4,7 @@
     "student": "Shinta Faradillah Destiany",
     "nim": "25110200007",
     "freeze": null,
-    "generatedAt": "11 Nov 2026, 21.57 WIB",
+    "generatedAt": "12 Nov 2026, 10.37 WIB",
     "tfMin": 60,
     "capital": 100000000,
     "universe": [
@@ -67,15 +67,15 @@
       "slippagePct": 0.05
     },
     "btPeriod": "2023-11-10 s/d 2026-11-10",
-    "forwardStart": "2026-11-10",
-    "forwardEnd": "2026-11-10",
+    "forwardStart": "2026-11-11",
+    "forwardEnd": "2026-11-12",
     "forwardWindow": {
       "targetDays": 10,
-      "elapsedDays": 0,
-      "daysLogged": 1,
+      "elapsedDays": 0.18,
+      "daysLogged": 2,
       "status": "partial",
-      "firstTs": 1794318138,
-      "lastTs": 1794318138
+      "firstTs": 1794403882,
+      "lastTs": 1794419836
     }
   },
   "backtest": {
@@ -6039,57 +6039,167 @@
     ]
   },
   "forward": {
-    "perf": null,
+    "perf": {
+      "start": 1794403882,
+      "end": 1794419836,
+      "days": 0.18465277777777778,
+      "equityStart": 100000000,
+      "equityEnd": 100000000,
+      "totalReturnPct": 0,
+      "cagrPct": 0,
+      "mddPct": 0,
+      "nTrades": 0,
+      "winRatePct": 0,
+      "profitFactor": 0,
+      "avgWinPct": 0,
+      "avgLossPct": 0,
+      "grossProfit": 0,
+      "grossLoss": 0,
+      "totalCost": 0,
+      "costSharePct": null,
+      "benchmarkPct": 0.3030691245480282
+    },
     "trades": [],
     "dailyEq": [
       {
-        "t": 1794318138,
-        "day": "2026-11-10",
+        "t": 1794403882,
+        "day": "2026-11-11",
+        "equity": 100000000,
+        "cash": 100000000,
+        "nPos": 0
+      },
+      {
+        "t": 1794419836,
+        "day": "2026-11-12",
         "equity": 100000000,
         "cash": 100000000,
         "nPos": 0
       }
     ],
-    "benchmarkPct": null
+    "benchmarkPct": 0.3030691245480282
   },
   "ops": {
     "uptime": {
-      "expected": 1,
-      "processed": 1,
-      "pct": 100,
-      "calls": 2,
-      "okCalls": 1
+      "expected": 14,
+      "processed": 11,
+      "pct": 78.57142857142857,
+      "calls": 13,
+      "okCalls": 12
     },
-    "calls": 2,
-    "okCalls": 1,
-    "lastCall": 1794318178,
-    "errorCount": 3,
+    "calls": 13,
+    "okCalls": 12,
+    "lastCall": 1794452043,
+    "errorCount": 17,
     "killUses": 0
   },
   "errors": [
     {
-      "ts": 1794318138,
-      "iso": "2026-11-10T20:42:18.000+07:00",
+      "ts": 1794427225,
+      "iso": "2026-11-12T03:00:25.000+07:00",
+      "sym": "BTCIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794427225,
+      "iso": "2026-11-12T03:00:25.000+07:00",
+      "sym": "ETHIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794427225,
+      "iso": "2026-11-12T03:00:25.000+07:00",
+      "sym": "SOLIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794427225,
+      "iso": "2026-11-12T03:00:25.000+07:00",
+      "sym": "DOGEIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794427225,
+      "iso": "2026-11-12T03:00:25.000+07:00",
+      "sym": "XRPIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794427225,
+      "iso": "2026-11-12T03:00:25.000+07:00",
       "sym": "ADAIDR",
-      "reason": "data tidak valid: volume nol pada 2026-11-01T21:00:00.000Z"
+      "reason": "1 candle terlewat sejak tick terakhir"
     },
     {
-      "ts": 1794318138,
-      "iso": "2026-11-10T20:42:18.000+07:00",
+      "ts": 1794427225,
+      "iso": "2026-11-12T03:00:25.000+07:00",
       "sym": "BNBIDR",
-      "reason": "data tidak valid: volume nol pada 2026-10-29T19:00:00.000Z"
+      "reason": "1 candle terlewat sejak tick terakhir"
     },
     {
-      "ts": 1794318138,
-      "iso": "2026-11-10T20:42:18.000+07:00",
+      "ts": 1794427225,
+      "iso": "2026-11-12T03:00:25.000+07:00",
       "sym": "LINKIDR",
-      "reason": "data tidak valid: volume nol pada 2026-10-24T22:00:00.000Z"
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794445927,
+      "iso": "2026-11-12T08:12:07.000+07:00",
+      "sym": "BTCIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794445927,
+      "iso": "2026-11-12T08:12:07.000+07:00",
+      "sym": "ETHIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794445927,
+      "iso": "2026-11-12T08:12:07.000+07:00",
+      "sym": "SOLIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794445927,
+      "iso": "2026-11-12T08:12:07.000+07:00",
+      "sym": "DOGEIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794445927,
+      "iso": "2026-11-12T08:12:07.000+07:00",
+      "sym": "XRPIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794445927,
+      "iso": "2026-11-12T08:12:07.000+07:00",
+      "sym": "ADAIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794445927,
+      "iso": "2026-11-12T08:12:07.000+07:00",
+      "sym": "BNBIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794445927,
+      "iso": "2026-11-12T08:12:07.000+07:00",
+      "sym": "LINKIDR",
+      "reason": "data tidak valid: volume nol pada candle terakhir (2026-11-12T00:00:00.000Z)"
+    },
+    {
+      "ts": 1794452043,
+      "iso": "2026-11-12T09:54:03.000+07:00",
+      "sym": "LINKIDR",
+      "reason": "2 candle terlewat sejak tick terakhir"
     }
   ],
   "dataQuality": {
-    "snapshotCount": 42,
-    "medianSpreadPct": 0.1773,
-    "p90SpreadPct": 1.3478399999999993,
+    "snapshotCount": 104,
+    "medianSpreadPct": 0.1275,
+    "p90SpreadPct": 0.36679,
     "medianSlipPct": null,
     "p90SlipPct": null,
     "feesPaid": 0,
