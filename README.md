@@ -47,7 +47,7 @@ scripts/local_tick.mjs       jalankan satu tick di lokal
 scripts/pull_logs.mjs        tarik state + log mentah dari deployment
 scripts/hitung_ulang.mjs     hitung ulang semua angka -> dashboard.html
 scripts/selftest.mjs         uji unit logika inti
-.github/workflows/tick.yml   penjadwal per jam (GitHub Actions)
+.github/workflows/tick.yml   penjadwal 4x/jam (GitHub Actions)
 ```
 
 ## Menjalankan di lokal
@@ -94,7 +94,7 @@ Hasil penting:
    Buka `https://<project>.vercel.app/api/dashboard`.
 6. **Penjadwal**: Vercel Hobby hanya mengizinkan cron harian, jadi pakai GitHub Actions:
    - Settings → Secrets: `BOT_URL` (mis. `https://<project>.vercel.app`) dan `CRON_SECRET`.
-   - Workflow `.github/workflows/tick.yml` sudah berjalan tiap jam pada menit ke-7.
+   - Workflow `.github/workflows/tick.yml` berjalan **empat kali per jam** (menit 7, 22, 37, 52). Cron GitHub bersifat best-effort: jadwal sekali per jam pernah telat sampai 90 menit sehingga candle 1 jam terlewat dan sinyal di candle itu tidak dievaluasi. Tick tambahan aman karena `/api/tick` idempoten per candle (`state.lastProcessed`).
    - Di repo publik, jadwal Actions otomatis aktif. Cek tab **Actions** → *tick* → *Run workflow* untuk uji manual.
 
 > Jika memakai Vercel Pro, cron per jam bisa ditambahkan di `vercel.json`:

@@ -175,6 +175,14 @@ Pertanyaan yang harus dijawab di sini (jangan diisi sebelum ada data):
 - **Biaya** diukur pada satu malam. Kalau grader mengulang pengukuran di jam lain,
   angkanya akan berbeda — karena itu nilai mentah snapshot ikut dikumpulkan
   (`logs/snapshots.ndjson`), bukan hanya ringkasannya.
+- **Penjadwal sempat meninggalkan celah.** Cron GitHub Actions bersifat best-effort: pada
+  11–12 November beberapa run telat 60–90 menit, sehingga 3 dari 14 candle 1 jam tidak
+  pernah dievaluasi (`uptime` 78,6%). Karena itu jadwal dirapatkan menjadi empat kali per
+  jam (menit 7, 22, 37, 52) pada 12 November — perubahan **operasional**, bukan strategi:
+  parameter, sinyal, universe, dan aturan eksekusi tidak disentuh, dan `/api/tick` tetap
+  idempoten per candle. Konsekuensinya jujur dicatat: candle yang terlewat sebelum
+  perubahan itu tidak dapat dipulihkan, dan hal ini ikut menjelaskan mengapa jumlah trade
+  forward bisa lebih sedikit daripada backtest pada jendela yang sama.
 - Perbaikan yang layak dicoba berikutnya: uji walk-forward dengan re-fit berkala,
   filter volatilitas (ATR) untuk menghindari entry di pasar sideway, dan exit
   berbasis trailing stop sebagai pembanding exit MA lambat.
