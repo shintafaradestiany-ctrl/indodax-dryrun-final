@@ -4,7 +4,7 @@
     "student": "Shinta Faradillah Destiany",
     "nim": "25110200007",
     "freeze": null,
-    "generatedAt": "12 Nov 2026, 10.37 WIB",
+    "generatedAt": "12 Nov 2026, 19.03 WIB",
     "tfMin": 60,
     "capital": 100000000,
     "universe": [
@@ -6080,16 +6080,16 @@
   },
   "ops": {
     "uptime": {
-      "expected": 14,
-      "processed": 11,
-      "pct": 78.57142857142857,
-      "calls": 13,
-      "okCalls": 12
+      "expected": 23,
+      "processed": 19,
+      "pct": 82.6086956521739,
+      "calls": 28,
+      "okCalls": 27
     },
-    "calls": 13,
-    "okCalls": 12,
-    "lastCall": 1794452043,
-    "errorCount": 17,
+    "calls": 28,
+    "okCalls": 27,
+    "lastCall": 1794484823,
+    "errorCount": 33,
     "killUses": 0
   },
   "errors": [
@@ -6194,12 +6194,108 @@
       "iso": "2026-11-12T09:54:03.000+07:00",
       "sym": "LINKIDR",
       "reason": "2 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794456560,
+      "iso": "2026-11-12T11:09:20.000+07:00",
+      "sym": "BTCIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794456560,
+      "iso": "2026-11-12T11:09:20.000+07:00",
+      "sym": "ETHIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794456560,
+      "iso": "2026-11-12T11:09:20.000+07:00",
+      "sym": "SOLIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794456560,
+      "iso": "2026-11-12T11:09:20.000+07:00",
+      "sym": "DOGEIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794456560,
+      "iso": "2026-11-12T11:09:20.000+07:00",
+      "sym": "XRPIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794456560,
+      "iso": "2026-11-12T11:09:20.000+07:00",
+      "sym": "ADAIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794456560,
+      "iso": "2026-11-12T11:09:20.000+07:00",
+      "sym": "BNBIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794456560,
+      "iso": "2026-11-12T11:09:20.000+07:00",
+      "sym": "LINKIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794470407,
+      "iso": "2026-11-12T15:00:07.000+07:00",
+      "sym": "BTCIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794470407,
+      "iso": "2026-11-12T15:00:07.000+07:00",
+      "sym": "ETHIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794470407,
+      "iso": "2026-11-12T15:00:07.000+07:00",
+      "sym": "SOLIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794470407,
+      "iso": "2026-11-12T15:00:07.000+07:00",
+      "sym": "DOGEIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794470407,
+      "iso": "2026-11-12T15:00:07.000+07:00",
+      "sym": "XRPIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794470407,
+      "iso": "2026-11-12T15:00:07.000+07:00",
+      "sym": "ADAIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794470407,
+      "iso": "2026-11-12T15:00:07.000+07:00",
+      "sym": "BNBIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
+    },
+    {
+      "ts": 1794470407,
+      "iso": "2026-11-12T15:00:07.000+07:00",
+      "sym": "LINKIDR",
+      "reason": "1 candle terlewat sejak tick terakhir"
     }
   ],
   "dataQuality": {
-    "snapshotCount": 104,
-    "medianSpreadPct": 0.1275,
-    "p90SpreadPct": 0.36679,
+    "snapshotCount": 224,
+    "medianSpreadPct": 0.09720000000000001,
+    "p90SpreadPct": 0.3494099999999994,
     "medianSlipPct": null,
     "p90SlipPct": null,
     "feesPaid": 0,
