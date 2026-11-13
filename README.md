@@ -48,6 +48,7 @@ scripts/pull_logs.mjs        tarik state + log mentah dari deployment
 scripts/hitung_ulang.mjs     hitung ulang semua angka -> dashboard.html
 scripts/selftest.mjs         uji unit logika inti
 .github/workflows/tick.yml   penjadwal 4x/jam (GitHub Actions)
+CHANGELOG.md             riwayat pekerjaan per tanggal + hash commit
 ```
 
 ## Menjalankan di lokal
@@ -77,6 +78,21 @@ Hasil penting:
 | `data/fetch_report.json` | cakupan data historis (bar, celah, jumlah request) |
 | `logs/{calls,orders,equity,errors,snapshots,candles}.ndjson` | log mentah forward test |
 | `dashboard.html` | dashboard offline (angka dihitung dari log) |
+
+## Reproduksibilitas (untuk penilai)
+
+Tidak ada langkah manual dan tidak perlu akun/API key untuk memeriksa hasil:
+
+```bash
+node scripts/backtest.mjs      # menghasilkan ulang angka backtest
+node scripts/hitung_ulang.mjs  # menghasilkan ulang dashboard.html dari log mentah
+```
+
+- Proyek ini **tanpa dependensi** (`package.json` tidak punya `dependencies`), jadi `npm install` tidak diperlukan.
+- Backtest memakai **tanggal acuan = candle terakhir di `data/`**, bukan tanggal hari ini, sehingga angkanya sama kapan pun dijalankan.
+- Biaya diambil dari `data/cost.json` yang dibekukan (diukur 10 Nov 2026). Untuk mengukur ulang dengan sengaja: `BT_RECOMPUTE_COST=1 node scripts/backtest.mjs`.
+- Keluaran yang diharapkan: return **+22,88%**, CAGR **7,11%**, max DD **33,79%**, **470 trade** — sama dengan `data/backtest_summary.mjs` yang ikut di-commit.
+- `dashboard.html` adalah file mandiri (tanpa CDN) dan bisa dibuka langsung dari file manager.
 
 ## Deploy ke Vercel
 

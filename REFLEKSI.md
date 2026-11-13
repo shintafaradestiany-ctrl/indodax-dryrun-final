@@ -123,6 +123,15 @@ sinyalnya tajam.
 - **Snapshot spread hanya 3 putaran** (10 Nov 2026, malam WIB). Spread XRP sempat
   1,39% di putaran pertama lalu 0,03–0,05% di putaran berikutnya; median dipakai.
   Ini sumber ketidakpastian biaya yang nyata.
+- **Backtest sempat tidak bisa direproduksi** setelah bot berjalan: skrip menghitung
+  ulang biaya dari `logs/snapshots.ndjson`, yang kini juga berisi snapshot forward
+  test, dan tanggal akhir backtest mengikuti tanggal hari ini. Akibatnya menjalankan
+  `node scripts/backtest.mjs` menghasilkan angka berbeda (spread 0,097% vs 0,177%)
+  dan bahkan gagal saat jendela forward belum punya data candle. Diperbaiki
+  13 November: biaya dibaca dari `data/cost.json` yang dibekukan, tanggal acuan
+  memakai candle terakhir di `data/`, dan jendela pembanding dibatasi ke data yang
+  tersedia. Setelah perbaikan, keluaran kembali identik dengan ringkasan beku
+  (+22,88%, CAGR 7,11%, MDD 33,79%, 470 trade).
 
 ## 6. Backtest vs forward test (diisi setelah 10 hari)
 

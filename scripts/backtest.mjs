@@ -21,10 +21,9 @@ const LOGS = path.join(ROOT, 'logs');
 fs.mkdirSync(LOGS, { recursive: true });
 
 const isoDay = t => new Date(t * 1000).toISOString().slice(0, 10);
-const now = Math.floor(Date.now() / 1000);
-const BT_START = process.env.BT_START || isoDay(now - Math.round(3 * 365.25 * 86400));
-const BT_END = process.env.BT_END || isoDay(now);
 const ymd = s => Math.floor(Date.parse(s + 'T00:00:00Z') / 1000);
+/* BT_START/BT_END baru ditentukan setelah data dibaca: acuannya candle terakhir
+ * yang tersedia, bukan tanggal hari ini. Lihat blok setelah pemuatan data. */
 
 function loadCsv(sym) {
   const p = path.join(DATA, `${sym}_${CFG.tfMin}.csv`);
@@ -40,32 +39,50 @@ function readNdjson(p) {
   return fs.readFileSync(p, 'utf8').split('\n').filter(Boolean).map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
 }
 
-/* ---------- biaya: median spread & slippage hasil pengukuran ---------- */
-const snapshots = readNdjson(path.join(LOGS, 'snapshots.ndjson'));
-const orders = readNdjson(path.join(LOGS, 'orders.ndjson'));
-/* hanya snapshot pasangan yang benar-benar ditradingkan, supaya spread pasangan
- * tipis di luar universe tidak menggeser median biaya */
-const uniSet = new Set(CFG.universe);
-const snapsU = snapshots.filter(s => uniSet.has(s.sym));
-const spreadMedian = snapsU.length ? pctile(snapsU.map(s => s.spreadPct), 50) : null;
-const slipMedian = orders.length ? pctile(orders.map(o => Math.abs(o.slipPct || 0)), 50) : null;
-const cost = {
-  spreadPct: Number((spreadMedian ?? CFG.btSpreadBps / 100).toFixed(4)),
-  slippagePct: Number(Math.max(slipMedian ?? 0, CFG.btSlippageBps / 100).toFixed(4)),
-};
-const spreadBySym = {};
-for (const sym of CFG.universe) {
-  const rows = snapshots.filter(s => s.sym === sym).map(s => s.spreadPct).filter(Number.isFinite);
-  if (rows.length) spreadBySym[sym] = Number(pctile(rows, 50).toFixed(4));
+/* ---------- biaya: pakai hasil pengukuran yang dibekukan ----------
+ * Nilai beku ada di data/cost.json (diukur 10 Nov 2026 dari 22 snapshot).
+ * Kalau dihitung ulang dari logs/snapshots.ndjson setiap kali, angkanya berubah
+ * setelah bot berjalan (snapshot forward test ikut terhitung) sehingga backtest
+ * tidak lagi bisa direproduksi. Set BT_RECOMPUTE_COST=1 untuk mengukur ulang
+ * dengan sengaja.
+ */
+const COST_FILE = path.join(DATA, 'cost.json');
+const frozenCost = (!process.env.BT_RECOMPUTE_COST && fs.existsSync(COST_FILE))
+  ? JSON.parse(fs.readFileSync(COST_FILE, 'utf8'))
+  : null;
+
+let cost, spreadBySym;
+if (frozenCost) {
+  cost = { spreadPct: frozenCost.spreadPct, slippagePct: frozenCost.slippagePct };
+  spreadBySym = frozenCost.spreadBySym || {};
+  console.log(`[backtest] biaya beku dari data/cost.json (spread ${cost.spreadPct}% + slippage ${cost.slippagePct}%, diukur ${(frozenCost.computedAt || '').slice(0, 10)})`);
+} else {
+  const snapshots = readNdjson(path.join(LOGS, 'snapshots.ndjson'));
+  const orders = readNdjson(path.join(LOGS, 'orders.ndjson'));
+  /* hanya snapshot pasangan yang benar-benar ditradingkan, supaya spread pasangan
+   * tipis di luar universe tidak menggeser median biaya */
+  const uniSet = new Set(CFG.universe);
+  const snapsU = snapshots.filter(s => uniSet.has(s.sym));
+  const spreadMedian = snapsU.length ? pctile(snapsU.map(s => s.spreadPct), 50) : null;
+  const slipMedian = orders.length ? pctile(orders.map(o => Math.abs(o.slipPct || 0)), 50) : null;
+  cost = {
+    spreadPct: Number((spreadMedian ?? CFG.btSpreadBps / 100).toFixed(4)),
+    slippagePct: Number(Math.max(slipMedian ?? 0, CFG.btSlippageBps / 100).toFixed(4)),
+  };
+  spreadBySym = {};
+  for (const sym of CFG.universe) {
+    const rows = snapshots.filter(s => s.sym === sym).map(s => s.spreadPct).filter(Number.isFinite);
+    if (rows.length) spreadBySym[sym] = Number(pctile(rows, 50).toFixed(4));
+  }
+  fs.writeFileSync(COST_FILE, JSON.stringify({
+    ...cost, feeTakerPct: CFG.feeTakerPct, spreadBySym,
+    snapshotsUsed: snapsU.length, snapshotsTotal: snapshots.length,
+    source: snapsU.length
+      ? `median ${snapsU.length} snapshot order book (universe saja)`
+      : 'fallback konfigurasi (belum ada snapshot untuk universe)',
+    computedAt: new Date().toISOString(),
+  }, null, 2));
 }
-fs.writeFileSync(path.join(DATA, 'cost.json'), JSON.stringify({
-  ...cost, feeTakerPct: CFG.feeTakerPct, spreadBySym,
-  snapshotsUsed: snapsU.length, snapshotsTotal: snapshots.length,
-  source: snapsU.length
-    ? `median ${snapsU.length} snapshot order book (universe saja)`
-    : 'fallback konfigurasi (belum ada snapshot untuk universe)',
-  computedAt: new Date().toISOString(),
-}, null, 2));
 const costRun = { ...cost, spreadBySym };
 
 /* ---------- data ---------- */
@@ -82,6 +99,14 @@ if (!Object.keys(data).length) {
   process.exit(1);
 }
 
+/* Acuan tanggal = candle terakhir yang tersedia. Dengan begitu hasil backtest
+ * tidak bergeser hanya karena skrip dijalankan di hari yang berbeda atau karena
+ * data belum di-fetch ulang — syarat agar angka bisa direproduksi persis. */
+const dataEnd = isoDay(Math.max(...Object.values(data).map(b => b[b.length - 1].t)));
+const BT_END = process.env.BT_END || dataEnd;
+const BT_START = process.env.BT_START || isoDay(ymd(BT_END) - Math.round(3 * 365.25 * 86400));
+console.log(`[backtest] acuan tanggal = ${dataEnd} (candle terakhir di data/)`);
+
 const capital = CFG.startCapital;
 const wrap = r => ({ ...r, perf: perf({ dailyEq: r.dailyEq, trades: r.trades, capital }) });
 
@@ -89,22 +114,24 @@ const wrap = r => ({ ...r, perf: perf({ dailyEq: r.dailyEq, trades: r.trades, ca
 console.log(`[backtest] ${Object.keys(data).length} pasangan, ${BT_START} s/d ${BT_END}, biaya spread ${cost.spreadPct}% + slippage ${cost.slippagePct}%`);
 const full = wrap(runBacktest({ data, cfg: CFG, start: BT_START, end: BT_END, cost: costRun }));
 const btcBars = data[CFG.universe[0]] || Object.values(data)[0];
-const benchFull = buyHold(btcBars, ymd(BT_START), now, cost, CFG.feeTakerPct);
+const benchFull = buyHold(btcBars, ymd(BT_START), ymd(BT_END) + 86399, cost, CFG.feeTakerPct);
 full.perf.benchmarkPct = benchFull;
 
 /* ---------- backtest jendela forward (10 hari) ---------- */
 const fwEq = readNdjson(path.join(LOGS, 'equity.ndjson'));
-let wStart, wEnd;
+/* Jendela pembanding = 10 hari terakhir yang datanya benar-benar tersedia. Kalau
+ * log forward sudah ada tetapi data candle belum di-fetch ulang, jendela
+ * dibatasi ke data terakhir supaya skrip tidak gagal dan angkanya tetap terhitung. */
+let wStart = isoDay(ymd(dataEnd) - 10 * 86400);
+let wEnd = dataEnd;
 if (fwEq.length > 1) {
   const sorted = fwEq.slice().sort((a, b) => a.ts - b.ts);
-  wStart = isoDay(sorted[0].ts);
-  wEnd = isoDay(sorted[sorted.length - 1].ts);
-} else {
-  wStart = isoDay(now - 10 * 86400);
-  wEnd = BT_END;
+  const fStart = isoDay(sorted[0].ts), fEnd = isoDay(sorted[sorted.length - 1].ts);
+  if (fEnd <= dataEnd) { wStart = fStart; wEnd = fEnd; }
+  else console.log(`[backtest] log forward ${fStart} s/d ${fEnd} melewati data candle (${dataEnd}); jendela dibatasi ke ${wStart} s/d ${wEnd}`);
 }
 const windowBt = wrap(runBacktest({ data, cfg: CFG, start: wStart, end: wEnd, cost: costRun }));
-windowBt.perf.benchmarkPct = buyHold(btcBars, ymd(wStart), ymd(wEnd) + 86399, cost, CFG.feeTakerPct);
+if (windowBt.perf) windowBt.perf.benchmarkPct = buyHold(btcBars, ymd(wStart), ymd(wEnd) + 86399, cost, CFG.feeTakerPct);
 
 /* ---------- uji parameter (in-sample 70% / out-of-sample 30% / sensitivitas) ---------- */
 function validity() {
@@ -214,7 +241,9 @@ console.log('\n=== Backtest penuh ===');
 console.log(`Return ${p.totalReturnPct.toFixed(2)}% | CAGR ${p.cagrPct.toFixed(2)}% | MaxDD ${p.mddPct.toFixed(2)}% | PF ${Number.isFinite(p.profitFactor) ? p.profitFactor.toFixed(2) : 'inf'} | Trade ${p.nTrades} | Win ${p.winRatePct.toFixed(1)}%`);
 console.log(`Benchmark BTC/IDR ${benchFull?.toFixed(2)}% | Porsi biaya ${p.costSharePct?.toFixed(1)}%`);
 console.log(`\n=== Backtest jendela forward ${wStart}..${wEnd} ===`);
-console.log(`Return ${wp.totalReturnPct.toFixed(2)}% | MaxDD ${wp.mddPct.toFixed(2)}% | Trade ${wp.nTrades} | Benchmark ${windowBt.perf.benchmarkPct?.toFixed(2)}%`);
+console.log(wp
+  ? `Return ${wp.totalReturnPct.toFixed(2)}% | MaxDD ${wp.mddPct.toFixed(2)}% | Trade ${wp.nTrades} | Benchmark ${wp.benchmarkPct?.toFixed(2)}%`
+  : 'Tidak ada candle pada jendela ini — dilewati.');
 console.log(`\n=== Uji parameter ===`);
 console.log(`Split ${val.split} | Terbaik in-sample MA${val.bestInSample.N}/${val.bestInSample.M} SL${val.bestInSample.sl} (CAGR ${val.bestInSample.cagr?.toFixed(2)}%)`);
 console.log(`Frozen OOS: CAGR ${val.frozenOos?.cagrPct?.toFixed(2)}% | MDD ${val.frozenOos?.mddPct?.toFixed(2)}%`);
