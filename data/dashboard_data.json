@@ -4,7 +4,7 @@
     "student": "Shinta Faradillah Destiany",
     "nim": "25110200007",
     "freeze": null,
-    "generatedAt": "12 Nov 2026, 19.03 WIB",
+    "generatedAt": "13 Nov 2026, 10.14 WIB",
     "tfMin": 60,
     "capital": 100000000,
     "universe": [
@@ -68,14 +68,14 @@
     },
     "btPeriod": "2023-11-10 s/d 2026-11-10",
     "forwardStart": "2026-11-11",
-    "forwardEnd": "2026-11-12",
+    "forwardEnd": "2026-11-13",
     "forwardWindow": {
       "targetDays": 10,
-      "elapsedDays": 0.18,
-      "daysLogged": 2,
+      "elapsedDays": 1.15,
+      "daysLogged": 3,
       "status": "partial",
       "firstTs": 1794403882,
-      "lastTs": 1794419836
+      "lastTs": 1794502827
     }
   },
   "backtest": {
@@ -6041,8 +6041,8 @@
   "forward": {
     "perf": {
       "start": 1794403882,
-      "end": 1794419836,
-      "days": 0.18465277777777778,
+      "end": 1794502827,
+      "days": 1.1451967592592593,
       "equityStart": 100000000,
       "equityEnd": 100000000,
       "totalReturnPct": 0,
@@ -6057,7 +6057,7 @@
       "grossLoss": 0,
       "totalCost": 0,
       "costSharePct": null,
-      "benchmarkPct": 0.3030691245480282
+      "benchmarkPct": -2.621354796792518
     },
     "trades": [],
     "dailyEq": [
@@ -6074,21 +6074,28 @@
         "equity": 100000000,
         "cash": 100000000,
         "nPos": 0
+      },
+      {
+        "t": 1794502827,
+        "day": "2026-11-13",
+        "equity": 100000000,
+        "cash": 100000000,
+        "nPos": 0
       }
     ],
-    "benchmarkPct": 0.3030691245480282
+    "benchmarkPct": -2.621354796792518
   },
   "ops": {
     "uptime": {
-      "expected": 23,
-      "processed": 19,
-      "pct": 82.6086956521739,
-      "calls": 28,
-      "okCalls": 27
+      "expected": 38,
+      "processed": 34,
+      "pct": 89.47368421052632,
+      "calls": 104,
+      "okCalls": 103
     },
-    "calls": 28,
-    "okCalls": 27,
-    "lastCall": 1794484823,
+    "calls": 104,
+    "okCalls": 103,
+    "lastCall": 1794538823,
     "errorCount": 33,
     "killUses": 0
   },
@@ -6293,9 +6300,9 @@
     }
   ],
   "dataQuality": {
-    "snapshotCount": 224,
-    "medianSpreadPct": 0.09720000000000001,
-    "p90SpreadPct": 0.3494099999999994,
+    "snapshotCount": 832,
+    "medianSpreadPct": 0.1286,
+    "p90SpreadPct": 0.45253,
     "medianSlipPct": null,
     "p90SlipPct": null,
     "feesPaid": 0,
