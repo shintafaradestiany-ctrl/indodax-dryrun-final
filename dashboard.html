@@ -46,28 +46,28 @@
 </style></head><body class="st-partial">
 <header>
   <h1>UAS Algoritma Trading — Bot Dry Run Indodax</h1>
-  <div class="sub">Shinta Faradillah Destiany · 25110200007 · Forward test 2026-11-11 s/d 2026-11-13 (WIB)</div>
+  <div class="sub">Shinta Faradillah Destiany · 25110200007 · Forward test 2026-11-11 s/d 2026-11-14 (WIB)</div>
   <div class="badges">
     <span class="badge">Universe: BTCIDR · ETHIDR · SOLIDR · DOGEIDR · XRPIDR · ADAIDR · BNBIDR · LINKIDR</span>
     <span class="badge">MA 150/400 · SL 8% · 60 menit</span>
     <span class="badge">Fee taker all-in 0,30%/sisi</span>
     <span class="badge">Spread backtest 0,177% · slippage 0,050%</span>
     <span class="badge">Modal Rp100.000.000</span>
-    <span class="badge st-partial">Status log: PARSIAL (3/10 hari)</span>
-    <span class="badge">Dibuat 13 Nov 2026, 10.14 WIB</span>
+    <span class="badge st-partial">Status log: PARSIAL (4/10 hari)</span>
+    <span class="badge">Dibuat 14 Nov 2026, 18.55 WIB</span>
   </div>
 </header>
 <main>
-  <div class="banner partial"><b>LOG PARSIAL — 1,2 dari 10 hari (log sudah menyentuh 3 tanggal).</b> Forward test belum selesai. Angka di halaman ini belum mewakili periode penuh dan tidak boleh dicampur dengan dashboard final.</div>
+  <div class="banner partial"><b>LOG PARSIAL — 2,2 dari 10 hari (log sudah menyentuh 4 tanggal).</b> Forward test belum selesai. Angka di halaman ini belum mewakili periode penuh dan tidak boleh dicampur dengan dashboard final.</div>
 
   <h2>1. Ringkasan</h2>
   <div class="grid">
     <div class="card pos"><div class="card-t">Backtest — total return</div><div class="card-v">+22,88%</div><div class="card-s">3,00 tahun · 470 trade</div></div>
     <div class="card "><div class="card-t">Backtest — CAGR</div><div class="card-v">+7,11%</div><div class="card-s">Max DD -33,79%</div></div>
-    <div class="card pos"><div class="card-t">Forward — total return</div><div class="card-v">0,00%</div><div class="card-s">1,1 hari · 0 trade</div></div>
+    <div class="card pos"><div class="card-t">Forward — total return</div><div class="card-v">0,00%</div><div class="card-s">2,1 hari · 0 trade</div></div>
     <div class="card "><div class="card-t">Forward — max drawdown</div><div class="card-v">0,00%</div><div class="card-s">equity akhir Rp100.000.000</div></div>
     <div class="card "><div class="card-t">Gap backtest vs forward</div><div class="card-v">0,00%</div><div class="card-s">forward dikurangi backtest jendela sama</div></div>
-    <div class="card neg"><div class="card-t">Benchmark BTC/IDR</div><div class="card-v">-2,62%</div><div class="card-s">buy & hold, biaya sama</div></div>
+    <div class="card neg"><div class="card-t">Benchmark BTC/IDR</div><div class="card-v">-6,67%</div><div class="card-s">buy & hold, biaya sama</div></div>
   </div>
   <div class="note">CAGR 10 hari tidak ditampilkan (tidak bermakna). Semua return sudah dikurangi fee dan spread/slippage.</div>
 
@@ -84,7 +84,7 @@
         <tr><th>Rata-rata rugi/trade</th><td>-3,27%</td><td>0,00%</td><td>0,00%</td></tr>
         <tr><th>Jumlah trade</th><td>470</td><td>0</td><td>0</td></tr>
         <tr><th>Porsi biaya / laba kotor</th><td>31,23%</td><td>—</td><td>—</td></tr>
-        <tr><th>Benchmark BTC/IDR</th><td>+130,71%</td><td>-7,32%</td><td>-2,62%</td></tr>
+        <tr><th>Benchmark BTC/IDR</th><td>+130,71%</td><td>-7,32%</td><td>-6,67%</td></tr>
       </tbody>
     </table>
     <div class="note">Baris "backtest jendela forward" = strategi yang sama dijalankan ulang hanya pada tanggal forward test, dengan candle dan biaya yang sama. Selisih baris ini dengan forward adalah gap eksekusi (timing, spread, slippage).</div>
@@ -127,10 +127,10 @@
       <text x="56" y="117" text-anchor="end" font-size="10" fill="#6b7280">0,0</text><line x1="64" x2="848" y1="113" y2="113" stroke="#e5e7eb"/>
       <text x="56" y="117" text-anchor="end" font-size="10" fill="#6b7280">0,0</text><line x1="64" x2="848" y1="113" y2="113" stroke="#e5e7eb"/>
       <text x="56" y="117" text-anchor="end" font-size="10" fill="#6b7280">0,0</text>
-    <path d="M64.0,113.0 L190.4,113.0 L848.0,113.0 L848.0,214.0 L64.0,214.0 Z" fill="#059669" opacity="0.08"/>
-    <path d="M64.0,113.0 L190.4,113.0 L848.0,113.0" fill="none" stroke="#059669" stroke-width="2"/>
+    <path d="M64.0,113.0 L131.5,113.0 L482.5,113.0 L848.0,113.0 L848.0,214.0 L64.0,214.0 Z" fill="#059669" opacity="0.08"/>
+    <path d="M64.0,113.0 L131.5,113.0 L482.5,113.0 L848.0,113.0" fill="none" stroke="#059669" stroke-width="2"/>
     <text x="64" y="234" font-size="10" fill="#6b7280">2026-11-11</text>
-    <text x="848" y="234" font-size="10" fill="#6b7280" text-anchor="end">2026-11-13</text>
+    <text x="848" y="234" font-size="10" fill="#6b7280" text-anchor="end">2026-11-14</text>
   </svg></div>
       <div><div class="card-s" style="margin-bottom:4px">Backtest jendela sama</div><svg viewBox="0 0 860 240" class="chart" role="img" aria-label="backtest jendela">
     <line x1="64" x2="848" y1="113" y2="113" stroke="#e5e7eb"/>
@@ -155,8 +155,8 @@
 
   <h2>5. Eksekusi &amp; biaya</h2>
   <div class="grid">
-    <div class="card "><div class="card-t">Snapshot order book</div><div class="card-v">832</div><div class="card-s">tersimpan mentah di logs/snapshots.ndjson</div></div>
-    <div class="card "><div class="card-t">Median spread diamati</div><div class="card-v">0,129%</div><div class="card-s">vs spread backtest 0,177%</div></div>
+    <div class="card "><div class="card-t">Snapshot order book</div><div class="card-v">2168</div><div class="card-s">tersimpan mentah di logs/snapshots.ndjson</div></div>
+    <div class="card "><div class="card-t">Median spread diamati</div><div class="card-v">0,133%</div><div class="card-s">vs spread backtest 0,177%</div></div>
     <div class="card "><div class="card-t">Median slippage fill</div><div class="card-v">—</div><div class="card-s">selisih harga fill vs best bid/ask level 1</div></div>
     <div class="card "><div class="card-t">Fee dibayar</div><div class="card-v">Rp0</div><div class="card-s">0 trade tertutup</div></div>
     <div class="card "><div class="card-t">Biaya spread+slippage</div><div class="card-v">Rp0</div><div class="card-s">selisih harga fill vs harga sinyal</div></div>
@@ -165,13 +165,13 @@
 
   <h2>6. Operasional</h2>
   <div class="grid">
-    <div class="card "><div class="card-t">Uptime candle</div><div class="card-v">89,5%</div><div class="card-s">34 dari 38 candle</div></div>
-    <div class="card "><div class="card-t">Panggilan bot</div><div class="card-v">104</div><div class="card-s">103 sukses · terakhir 13/11/26, 10.00</div></div>
-    <div class="card "><div class="card-t">Error API / data</div><div class="card-v">33</div><div class="card-s">retry dibatasi 3x, tercatat di log</div></div>
+    <div class="card "><div class="card-t">Uptime candle</div><div class="card-v">90,1%</div><div class="card-s">64 dari 71 candle</div></div>
+    <div class="card "><div class="card-t">Panggilan bot</div><div class="card-v">271</div><div class="card-s">260 sukses · terakhir 14/11/26, 18.45</div></div>
+    <div class="card "><div class="card-t">Error API / data</div><div class="card-v">45</div><div class="card-s">retry dibatasi 3x, tercatat di log</div></div>
     <div class="card "><div class="card-t">Kill switch dipakai</div><div class="card-v">0</div><div class="card-s">flag storage / env KILL_SWITCH</div></div>
   </div>
   <div class="panel" style="margin-top:12px">
-    <table><thead><tr><th>Waktu</th><th>Pasangan</th><th>Alasan</th></tr></thead><tbody><tr><td>12/11/26, 15.00</td><td>LINKIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 15.00</td><td>BNBIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 15.00</td><td>ADAIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 15.00</td><td>XRPIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 15.00</td><td>DOGEIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 15.00</td><td>SOLIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 15.00</td><td>ETHIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 15.00</td><td>BTCIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 11.09</td><td>LINKIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 11.09</td><td>BNBIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 11.09</td><td>ADAIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 11.09</td><td>XRPIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 11.09</td><td>DOGEIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 11.09</td><td>SOLIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 11.09</td><td>ETHIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr></tbody></table>
+    <table><thead><tr><th>Waktu</th><th>Pasangan</th><th>Alasan</th></tr></thead><tbody><tr><td>14/11/26, 06.00</td><td>LINKIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>14/11/26, 05.45</td><td>LINKIDR</td><td>data tidak valid: volume nol pada candle terakhir (2026-11-13T21:00:00.000Z)</td></tr><tr><td>14/11/26, 05.30</td><td>LINKIDR</td><td>data tidak valid: volume nol pada candle terakhir (2026-11-13T21:00:00.000Z)</td></tr><tr><td>14/11/26, 05.29</td><td>LINKIDR</td><td>data tidak valid: volume nol pada candle terakhir (2026-11-13T21:00:00.000Z)</td></tr><tr><td>14/11/26, 05.15</td><td>LINKIDR</td><td>data tidak valid: volume nol pada candle terakhir (2026-11-13T21:00:00.000Z)</td></tr><tr><td>14/11/26, 05.00</td><td>LINKIDR</td><td>data tidak valid: volume nol pada candle terakhir (2026-11-13T21:00:00.000Z)</td></tr><tr><td>14/11/26, 03.00</td><td>LINKIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>14/11/26, 02.45</td><td>LINKIDR</td><td>data tidak valid: volume nol pada candle terakhir (2026-11-13T18:00:00.000Z)</td></tr><tr><td>14/11/26, 02.30</td><td>LINKIDR</td><td>data tidak valid: volume nol pada candle terakhir (2026-11-13T18:00:00.000Z)</td></tr><tr><td>14/11/26, 02.19</td><td>LINKIDR</td><td>data tidak valid: volume nol pada candle terakhir (2026-11-13T18:00:00.000Z)</td></tr><tr><td>14/11/26, 02.15</td><td>LINKIDR</td><td>data tidak valid: volume nol pada candle terakhir (2026-11-13T18:00:00.000Z)</td></tr><tr><td>14/11/26, 02.00</td><td>LINKIDR</td><td>data tidak valid: volume nol pada candle terakhir (2026-11-13T18:00:00.000Z)</td></tr><tr><td>12/11/26, 15.00</td><td>LINKIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 15.00</td><td>BNBIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr><tr><td>12/11/26, 15.00</td><td>ADAIDR</td><td>1 candle terlewat sejak tick terakhir</td></tr></tbody></table>
   </div>
 
   <h2>7. Parameter &amp; universe</h2>

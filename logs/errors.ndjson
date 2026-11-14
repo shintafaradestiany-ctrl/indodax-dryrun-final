@@ -31,3 +31,15 @@
 {"ts":1794470407,"iso":"2026-11-12T15:00:07.000+07:00","sym":"ADAIDR","reason":"1 candle terlewat sejak tick terakhir"}
 {"ts":1794470407,"iso":"2026-11-12T15:00:07.000+07:00","sym":"BNBIDR","reason":"1 candle terlewat sejak tick terakhir"}
 {"ts":1794470407,"iso":"2026-11-12T15:00:07.000+07:00","sym":"LINKIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794596423,"iso":"2026-11-14T02:00:23.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-13T18:00:00.000Z)"}
+{"ts":1794597313,"iso":"2026-11-14T02:15:13.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-13T18:00:00.000Z)"}
+{"ts":1794597565,"iso":"2026-11-14T02:19:25.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-13T18:00:00.000Z)"}
+{"ts":1794598219,"iso":"2026-11-14T02:30:19.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-13T18:00:00.000Z)"}
+{"ts":1794599113,"iso":"2026-11-14T02:45:13.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-13T18:00:00.000Z)"}
+{"ts":1794600022,"iso":"2026-11-14T03:00:22.000+07:00","sym":"LINKIDR","reason":"1 candle terlewat sejak tick terakhir"}
+{"ts":1794607222,"iso":"2026-11-14T05:00:22.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-13T21:00:00.000Z)"}
+{"ts":1794608114,"iso":"2026-11-14T05:15:14.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-13T21:00:00.000Z)"}
+{"ts":1794608947,"iso":"2026-11-14T05:29:07.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-13T21:00:00.000Z)"}
+{"ts":1794609017,"iso":"2026-11-14T05:30:17.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-13T21:00:00.000Z)"}
+{"ts":1794609915,"iso":"2026-11-14T05:45:15.000+07:00","sym":"LINKIDR","reason":"data tidak valid: volume nol pada candle terakhir (2026-11-13T21:00:00.000Z)"}
+{"ts":1794610824,"iso":"2026-11-14T06:00:24.000+07:00","sym":"LINKIDR","reason":"1 candle terlewat sejak tick terakhir"}
