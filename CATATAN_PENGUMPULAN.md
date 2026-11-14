@@ -34,6 +34,7 @@ akan dikirim addendum berisi:
 | `logs/*.ndjson` | log mentah: tick, order, ekuitas, error, snapshot order book, candle |
 | `data/backtest_summary.mjs` | ringkasan backtest 3 tahun yang dipakai dashboard |
 | `STRATEGI.md`, `REFLEKSI.md` | aturan beku, alasan keputusan, keterbatasan |
+| `.env.example` | contoh konfigurasi — **tanpa secret asli**, hanya placeholder |
 | `CHANGELOG.md` | riwayat pekerjaan per tanggal + hash commit |
 
 `dashboard.html` adalah file mandiri: tidak memuat CDN, tidak butuh internet,
