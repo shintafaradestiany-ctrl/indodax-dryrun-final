@@ -14,13 +14,24 @@ dibandingkan langsung dengan backtest 3 tahun sebagai hasil akhir. Halaman
 dashboard memberi label **LOG PARSIAL (oranye)** supaya tidak tertukar dengan
 versi final.
 
-Forward test genap 10 hari pada **21 November 2026 ± 20.31 WIB**. Setelah itu
-akan dikirim addendum berisi:
+Forward test genap 10 hari pada **21 November 2026 ± 20.31 WIB**, saat dokumen
+ini disiapkan rencananya dikirim addendum berisi log 10 hari penuh,
+`dashboard.html` berlabel **LOG FINAL (hijau)**, dan tabel perbandingan
+backtest vs forward test (`REFLEKSI.md` bagian 6).
 
-- log mentah 10 hari penuh,
-- `dashboard.html` berlabel **LOG FINAL (hijau)**,
-- tabel perbandingan backtest vs forward test pada jendela yang sama
-  (`REFLEKSI.md` bagian 6).
+**Bila addendum tidak dapat dikirim**, hasil 10 hari tetap dapat diperiksa
+lewat dua jalan yang tidak perlu berkas baru:
+
+1. **Dashboard live** <https://indodax-dryrun-final.vercel.app> — setelah
+   21 November 2026 labelnya berubah sendiri menjadi **LOG FINAL (hijau)**
+   dengan log 10 hari penuh.
+2. **Riwayat commit di repo** — setelah 21 November, `logs/` dan
+   `dashboard.html` diperbarui dari log final, sehingga commit terakhir memuat
+   hasil lengkap.
+
+Berkas bertanggal di dalam paket ini tetap menjadi bukti resmi untuk
+pengumpulan **14 November 2026**; halaman live adalah pelengkap yang
+berkembang, bukan pengganti berkas yang dikumpulkan.
 
 ## Isi paket
 

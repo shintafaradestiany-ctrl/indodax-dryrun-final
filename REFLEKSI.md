@@ -137,8 +137,10 @@ sinyalnya tajam.
 
 > Dashboard menandai status log otomatis: **PARSIAL (oranye)** bila rentang log belum
 > 10 hari, **FINAL (hijau)** bila sudah. Kalau tugas dikumpulkan 14 November, halaman
-> yang disertakan masih PARSIAL dan tabel di bawah belum boleh dianggap hasil final;
-> versi FINAL dikirim setelah 21 November.
+> yang disertakan masih PARSIAL dan tabel di bawah belum boleh dianggap hasil final.
+> Versi FINAL tersedia setelah 21 November 2026: otomatis pada dashboard live
+> (<https://indodax-dryrun-final.vercel.app>) dan pada commit repo terakhir. Bila
+> addendum tidak terkirim, halaman live dan commit tersebut yang menjadi rujukannya.
 
 Jalankan:
 
