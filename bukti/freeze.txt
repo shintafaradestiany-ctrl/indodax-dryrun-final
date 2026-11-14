@@ -1,0 +1,117 @@
+BUKTI FREEZE — Bot Dry-Run Indodax (UAS Algoritma Trading)
+Nama   : Shinta Faradillah Destiany
+NIM    : 25110200007
+Dibuat : 14 Nov 2026, 19.46 WIB
+
+Berkas ini dihasilkan langsung dari repository Git, bukan ditulis tangan.
+Repo   : https://github.com/shintafaradestiany-ctrl/indodax-dryrun-final
+Arsip ZIP tidak memuat folder .git, jadi tag di bawah diverifikasi dari repo.
+
+========================================================================
+1) Tag yang ada di repo
+========================================================================
+$ git tag --list
+freeze-2026-11-11
+
+Tag freeze-2026-11-11 adalah annotated tag, sehingga punya objek sendiri yang
+menyimpan tanggal pembekuan dan pesannya.
+
+========================================================================
+2) Isi objek tag (tanggal & pesan pembekuan)
+========================================================================
+$ git cat-file -p freeze-2026-11-11
+object 733e25fd70b7f9888fac7775c432b116a5172950
+type commit
+tag freeze-2026-11-11
+tagger Shinta Faradillah Destiany <shintafara.destiany@cakrawala.ac.id> 1794370408 +0700
+
+Freeze parameter dan universe sebelum forward test 10 hari (11-21 Nov 2026 WIB)
+
+Baris "tagger ... 1794370408 +0700" =
+  11 Nov 2026, 11.13 WIB
+
+========================================================================
+3) Commit yang dibekukan
+========================================================================
+$ git rev-parse freeze-2026-11-11^{commit}
+733e25fd70b7f9888fac7775c432b116a5172950
+
+$ git show -s --format=fuller freeze-2026-11-11
+commit 733e25fd70b7f9888fac7775c432b116a5172950
+Author:     Shinta Faradillah Destiany <shintafara.destiany@cakrawala.ac.id>
+AuthorDate: Wed Nov 11 11:13:28 2026 +0700
+Commit:     Shinta Faradillah Destiany <shintafara.destiany@cakrawala.ac.id>
+CommitDate: Wed Nov 11 11:13:28 2026 +0700
+
+    Freeze UAS: bot dry-run Indodax (trend following MA 150/400, 8 pair IDR)
+    
+    Parameter beku: N=150 M=400 exit MA_M SL=8% tf=60m maxPos=5 20%/pos fee 0.30%/sisi min Rp25.000 daily loss 3% WIB.
+    
+    Termasuk bukti sebelum forward test: data/backtest_summary.mjs, data/cost.json, data/liquidity.json, data/backtest_trades.csv, logs/validity.json, logs/backtest_result.json, dan data historis 1 jam 2023-08-29..2026-11-10.
+
+========================================================================
+4) Bukti parameter strategi tidak berubah setelah freeze
+========================================================================
+Berkas yang menentukan sinyal, sizing, eksekusi, dan validasi:
+  lib/config.js  lib/strategy.js  lib/backtest.js  lib/bot.js  lib/exec.js  lib/validate.js
+
+$ git diff --stat freeze-2026-11-11..HEAD -- lib/config.js lib/strategy.js lib/backtest.js lib/bot.js lib/exec.js lib/validate.js
+(tidak ada keluaran — nol perubahan)
+
+Kesimpulan: sejak freeze sampai commit terakhir, tidak ada satu baris pun yang
+berubah pada logika strategi. Semua commit sesudahnya hanya menyentuh
+operasional, tampilan dashboard, dokumentasi, dan penambahan log.
+
+Parameter beku (dari lib/config.js):
+  N: num(process.env.STRATEGY_N, 150),          // MA cepat (bar)
+  M: num(process.env.STRATEGY_M, 400),          // MA lambat / filter tren (bar)
+  slPct: num(process.env.STRATEGY_SL, 8),       // stop loss dari harga masuk (%)
+  exitMa: (process.env.STRATEGY_EXIT_MA || 'M').toUpperCase(), // 'N' = exit di MA cepat (UTS), 'M' = MA lambat
+  tfMin: num(process.env.TF_MINUTES, 60),       // timeframe candle (menit)
+  startCapital: num(process.env.START_CAPITAL, 100_000_000),
+  maxPos: num(process.env.MAX_POSITIONS, 5),
+  posPctEquity: num(process.env.POS_PCT_EQUITY, 0.2),   // maks 20% ekuitas per posisi = 1/maxPos
+  maxTurnoverPct: num(process.env.MAX_TURNOVER_PCT, 0.05), // maks 5% rata-rata nilai transaksi 20 bar
+  dailyLossLimitPct: num(process.env.DAILY_LOSS_LIMIT_PCT, 3),
+  feeTakerPct: num(process.env.FEE_TAKER_PCT, 0.3), // all-in per sisi (taker + pajak)
+  minOrderIDR: num(process.env.MIN_ORDER_IDR, 25_000), // pakai yang lebih ketat (mode Pro)
+  maxSpreadPct: num(process.env.MAX_SPREAD_PCT, 2),
+  btSpreadBps: num(process.env.BT_SPREAD_BPS, 10),   // median spread dari snapshot (bp dari mid)
+  btSlippageBps: num(process.env.BT_SLIPPAGE_BPS, 5),
+  universe: (process.env.UNIVERSE || 'BTCIDR,ETHIDR,SOLIDR,DOGEIDR,XRPIDR,ADAIDR,BNBIDR,LINKIDR')
+
+========================================================================
+5) Berkas yang berubah sejak freeze (semuanya non-strategi)
+========================================================================
+$ git diff --name-only freeze-2026-11-11..HEAD
+.github/workflows/tick.yml
+CATATAN_PENGUMPULAN.md
+CHANGELOG.md
+README.md
+REFLEKSI.md
+api/export.js
+api/status.js
+bukti/dashboard_PARSIAL_2026-11-14.html
+dashboard.html
+data/dashboard_data.json
+lib/dashboard.js
+lib/report.js
+logs/calls.ndjson
+logs/candles.ndjson
+logs/equity.ndjson
+logs/errors.ndjson
+logs/orders.ndjson
+logs/snapshots.ndjson
+package.json
+scripts/backtest.mjs
+scripts/hitung_ulang.mjs
+scripts/pull_logs.mjs
+
+========================================================================
+6) Cara memverifikasi sendiri
+========================================================================
+  git clone https://github.com/shintafaradestiany-ctrl/indodax-dryrun-final
+  cd indodax-dryrun-final
+  git tag --list
+  git rev-parse freeze-2026-11-11^{commit}        # harus 733e25fd70b7f9888fac7775c432b116a5172950
+  git diff --stat freeze-2026-11-11..HEAD -- lib/config.js lib/strategy.js   # harus kosong

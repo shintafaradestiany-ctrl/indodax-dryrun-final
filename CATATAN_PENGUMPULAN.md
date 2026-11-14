@@ -28,6 +28,9 @@ akan dikirim addendum berisi:
 |---|---|
 | `dashboard.html` | dashboard offline, dicetak dari log mentah per 14 Nov 18.55 WIB |
 | `bukti/dashboard_PARSIAL_2026-11-14.html` | salinan bertanggal dari file di atas (untuk arsip) |
+| `bukti/freeze.txt` | bukti pembekuan dari Git: tag, tanggal, dan diff nol pada logika strategi |
+| `bukti/SHA256SUMS_2026-11-14.txt` | checksum seluruh berkas penting, untuk memeriksa keutuhan |
+| `bukti/README.md` | penjelasan isi folder `bukti/` dan cara memeriksanya |
 | `logs/*.ndjson` | log mentah: tick, order, ekuitas, error, snapshot order book, candle |
 | `data/backtest_summary.mjs` | ringkasan backtest 3 tahun yang dipakai dashboard |
 | `STRATEGI.md`, `REFLEKSI.md` | aturan beku, alasan keputusan, keterbatasan |
@@ -35,6 +38,32 @@ akan dikirim addendum berisi:
 
 `dashboard.html` adalah file mandiri: tidak memuat CDN, tidak butuh internet,
 bisa dibuka langsung dengan klik dua kali.
+
+## Bukti freeze
+
+Parameter dibekukan pada **11 November 2026 pukul 11.13 WIB** dan ditandai dengan
+annotated tag `freeze-2026-11-11` yang menunjuk commit
+`733e25fd70b7f9888fac7775c432b116a5172950`. Bukti lengkapnya ada di
+`bukti/freeze.txt`, yang dibuat langsung dari repository (bukan ditulis tangan)
+dan memuat:
+
+- isi objek tag beserta tanggal dan pesan pembekuannya,
+- perintah `git diff` pada `lib/config.js`, `lib/strategy.js`, `lib/backtest.js`,
+  `lib/bot.js`, `lib/exec.js`, dan `lib/validate.js` sejak freeze sampai commit
+  terakhir — **hasilnya kosong**, artinya tidak ada satu baris pun logika
+  strategi yang berubah setelah dibekukan,
+- daftar berkas yang berubah sejak freeze (hanya operasional, tampilan,
+  dokumentasi, dan penambahan log),
+- parameter beku apa adanya dari `lib/config.js`.
+
+Arsip ZIP sengaja tidak memuat folder `.git`. Untuk memverifikasi tag, jalankan
+dari repo:
+
+```bash
+git tag --list                                  # freeze-2026-11-11
+git rev-parse freeze-2026-11-11^{commit}         # 733e25fd70b7f9888fac7775c432b116a5172950
+git diff --stat freeze-2026-11-11..HEAD -- lib/config.js lib/strategy.js   # harus kosong
+```
 
 ## Angka pada saat pencetakan
 
@@ -78,4 +107,17 @@ SHA-256 `dashboard.html` saat dicetak:
 
 ```
 B653400724FC64D8901197BA3EA756B3DE3DCEA91E43BEFDC5268441961F02AF
+```
+
+Checksum seluruh berkas penting (dashboard, log mentah, data, dokumen) ada di
+`bukti/SHA256SUMS_2026-11-14.txt`. Cara memeriksa di Windows:
+
+```powershell
+Get-FileHash dashboard.html -Algorithm SHA256
+```
+
+atau di Linux/macOS:
+
+```bash
+shasum -a 256 -c bukti/SHA256SUMS_2026-11-14.txt
 ```
