@@ -67,8 +67,6 @@ sama kapan pun dijalankan.
 - Repo: https://github.com/shintafaradestiany-ctrl/indodax-dryrun-final
 - Dashboard live (pelengkap, isinya berubah setiap tick):
   https://indodax-dryrun-final.vercel.app
-- Status mentah:
-  https://indodax-dryrun-final.vercel.app/api/status?secret=8hZ140t5GOeJFABSlEQdXCqTscuDmKVxfrz2nkNHYp36avyo
 
 > Halaman live akan berubah dan setelah 21 November otomatis berlabel FINAL.
 > Bukti yang dikumpulkan tanggal 14 November adalah **file bertanggal** di paket
